@@ -16,6 +16,14 @@ def is_game_over(board: chess.Board):
 
     return board.is_checkmate() or board.is_stalemate() or board.is_repetition() or board.is_insufficient_material() or board.is_fifty_moves()
 
+def game_over_type(board: chess.Board):
+
+    if board.is_checkmate():
+        return "checkmate"
+
+    else:
+        return "stalemate"
+
 def make_move(move:str, board: chess.Board):
 
     try:
@@ -34,6 +42,16 @@ def bot_move(board):
     return board.san(random.choice(possible_moves))
 
 def game_summary(board: chess.Board):
+
+    os.system('clear')
+
+    end_condition = game_over_type(board)
+
+    if end_condition == "checkmate":
+        print("Checkmate")
+
+    elif end_condition == "stalemate":
+        print("Draw by stalemate")
 
     move_list = list(board.move_stack)
 
