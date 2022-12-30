@@ -22,7 +22,7 @@ def game_over_type(board: chess.Board):
         return "checkmate"
 
     else:
-        return "stalemate"
+        return "draw"
 
 def make_move(move:str, board: chess.Board):
 
@@ -50,8 +50,8 @@ def game_summary(board: chess.Board):
     if end_condition == "checkmate":
         print("Checkmate")
 
-    elif end_condition == "stalemate":
-        print("Draw by stalemate")
+    elif end_condition == "draw":
+        print("Draw")
 
     move_list = list(board.move_stack)
 

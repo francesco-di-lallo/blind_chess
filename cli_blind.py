@@ -1,5 +1,6 @@
 import chess
 import chess_utils
+import chessBot
 import os
 
 clear = lambda: os.system('clear')
@@ -7,6 +8,8 @@ clear = lambda: os.system('clear')
 clear()
 
 board = chess_utils.start_game()
+
+bot = chessBot.chessBot()
 
 user_colour = chess.WHITE
 bot_colour = not user_colour
@@ -23,14 +26,14 @@ while not chess_utils.is_game_over(board):
 
     if board.turn == user_colour:
         #user move subprocess
-        user_move = draw_rep.pop(0) #input("User to move:")
+        user_move = bot.move(board) #draw_rep.pop(0) #input("User to move:")
 
         chess_utils.make_move(user_move, board)
 
     else:
         #bot move subprocess
 
-        bot_move = draw_rep.pop(0) #chess_utils.bot_move(board)
+        bot_move = bot.move(board)# draw_rep.pop(0) #bot.move(board)
 
         chess_utils.make_move(bot_move, board)
 
